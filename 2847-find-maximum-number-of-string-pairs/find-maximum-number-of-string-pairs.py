@@ -1,9 +1,9 @@
 class Solution:
     def maximumNumberOfStringPairs(self, words: List[str]) -> int:
-        nums, counter = {}, 0
-        for a in words:
-            if a[:] in nums or a[::-1] in nums:
+        seen_words, counter = set(), 0
+        for word in words:
+            if word in seen_words or word[::-1] in seen_words:
                 counter += 1
             else:
-                nums[a] = 1
+                seen_words.add(word)
         return counter
