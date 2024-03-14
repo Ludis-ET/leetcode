@@ -8,8 +8,6 @@ class Solution:
             if i < len(s) - 1 and s[i] == s[i + 1]:
                 count += 1
             else:
-                # Append the count and the digit to the result string
                 ans += str(count) + s[i]
-                count = 1  # Reset the count for the next digit
-        
+                count = 1
         return ans
