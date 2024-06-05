@@ -1,10 +1,18 @@
 class Solution:
     def commonChars(self, words: List[str]) -> List[str]:
-        if len(words) < 2:
-            return words
+        ans = [0] * 26
+        for i in words[0]:
+            ans[ord(i) - ord('a')] += 1
+        
+        for i in words[1:]:
+            tmp = [0] * 26
+            for j in i:
+                tmp[ord(j) - ord('a')] += 1
+            for i in range(26):
+                ans[i] = min(ans[i], tmp[i])
+                
         res = []
-        word1 = set(words[0])
-        for char in word1:
-            frequency = min([word.count(char) for word in words])
-            res += [char] * frequency
+        for i in range(26):
+            for j in range(ans[i]):
+                res += chr(i + ord('a'))
         return res
