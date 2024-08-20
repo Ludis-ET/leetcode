@@ -9,7 +9,7 @@ class Solution:
                 mxq.pop()
             mnq.append(r)
             mxq.append(r)
-            while l < len(nums) and abs(nums[mnq[0]] - nums[mxq[0]]) > limit:
+            if nums[mxq[0]] - nums[mnq[0]] > limit:
                 l += 1
                 if mnq[0] < l:
                     mnq.popleft()
