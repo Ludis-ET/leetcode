@@ -12,8 +12,8 @@ class Solution:
         def dfs(node):
             if not node:
                 return
-            for i in node.children:
-                dfs(i)
+            for child in node.children:
+                dfs(child)
             ans.append(node.val)
         dfs(root)
         return ans
