@@ -12,8 +12,7 @@ class Solution:
             if q:
                 c = q.popleft()[1]
                 l = deque()
-                i = 0
-                while i < len(q):
+                while q:
                     t = q.popleft()
                     if t[0] == '-' and t[1] == c:
                         break
