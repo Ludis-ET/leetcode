@@ -1,14 +1,27 @@
 class Solution:
     def dividePlayers(self, skill: List[int]) -> int:
+        n = len(skill)
         skill.sort()
-        l, r = 0, len(skill) - 1
-        ans = 0
-        last = skill[l] + skill[r]
+        div = sum(skill) / (n/2)
+        arr = []
+        l, r = 0, n - 1
+
         while l < r:
-            n = skill[l] + skill[r]
-            if last != n:
-                return -1
-            ans += skill[l] * skill[r]
-            l += 1
-            r -= 1
-        return ans
+            if skill[l] + skill[r] == div:
+                arr.append([skill[l], skill[r]])
+                l += 1
+                r -= 1
+            elif skill[l] + skill[r] < div:
+                l += 1
+            else:    
+                r -= 1
+        res = 0
+        for i, j in arr:
+            res += (i * j)
+        if len(arr) != n/2:
+            return -1
+        return res if res else -1
+
+            
+        
+        
